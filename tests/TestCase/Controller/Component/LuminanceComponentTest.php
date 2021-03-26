@@ -47,8 +47,9 @@ class LuminanceComponentTest extends TestCase
      *
      * @return void
      */
-    public function testInitialization()
+    public function testGetContrastColor()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->assertEquals('#FFFFFF', $this->Luminance->getContrastColor("#000000"));
+        $this->assertEquals('#000000', $this->Luminance->getContrastColor("#FFFFFF"));
     }
 }

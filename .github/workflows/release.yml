@@ -5,6 +5,35 @@ on:
     branches: [ master ]
 
 jobs:
+  test:
+    name: Unittest
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php:
+          - 5.6
+          - 7.0
+          - 7.1
+          - 7.2
+          - 7.3
+          - 7.4
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          extensions: intl, mbstring, imap, zip, dom
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run Unittests
+        run: composer run-script test
   release:
     runs-on: ubuntu-latest
     steps:

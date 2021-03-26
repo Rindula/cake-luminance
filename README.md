@@ -1,4 +1,5 @@
 # Luminance plugin for CakePHP
+[![Release](https://github.com/Rindula/cake-luminance/actions/workflows/release.yml/badge.svg)](https://github.com/Rindula/cake-luminance/actions/workflows/release.yml)
 
 ## Installation
 
