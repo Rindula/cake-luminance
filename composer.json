@@ -2,6 +2,7 @@
     "name": "rindula/luminance",
     "description": "Luminance plugin for CakePHP",
     "type": "cakephp-plugin",
+    "license": "MIT",
     "authors": [
         {
             "name": "Sven Nolting",
