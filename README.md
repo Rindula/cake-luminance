@@ -36,23 +36,24 @@ public $helpers = ['Luminance'];
 Add the following to the initialize method of `src/View/AppView.php`:
 
 ```php
-$this->loadHelper('Luminance');
+$this->loadHelper('Luminance.Luminance');
 ```
 
 ### In a Controller
 
-_In Progress_
+Add this to the initialize function of the Controller you need the Component in, below `parent::initialize()`:
+
+```php
+$this->loadComponent('Luminance.Luminance')
+```
 
 ## Usage
 
 Once the respective setup is done you can use it like this:
 
-### View
+### View and Controller
 
 ```php
-$this->Luminance->getContrastColor($hexColor);
+$color = $this->Luminance->getContrastColor($hexColor);
 ```
-
-### Controller
-
-_In Progress_
+`$color` then contains the hex color of the contrast color, which is either black (#000000) or white (#FFFFFF).
