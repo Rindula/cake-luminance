@@ -41,7 +41,7 @@ jobs:
         run: composer run-script test
   release:
     runs-on: ubuntu-latest
-    if: github.ref_type == "tag"
+    if: github.ref_type == 'tag'
     needs:
       - test
     steps:
