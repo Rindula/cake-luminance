@@ -1,9 +1,13 @@
 name: Release
 
 on:
+  schedule:
+    - cron: '0 12 * * *'
   push:
     tags:
       - 'v*'
+    branches:
+      - master
 
 jobs:
   test:
@@ -37,6 +41,7 @@ jobs:
         run: composer run-script test
   release:
     runs-on: ubuntu-latest
+    if: github.ref_type == "tag"
     needs:
       - test
     steps:
