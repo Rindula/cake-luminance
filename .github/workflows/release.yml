@@ -39,23 +39,3 @@ jobs:
 
       - name: Run Unittests
         run: composer run-script test
-  release:
-    runs-on: ubuntu-latest
-    if: github.ref_type == 'tag'
-    needs:
-      - test
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup Git
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-      - name: 📦 Release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          body_path: CHANGELOG.md
